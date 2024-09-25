@@ -1,4 +1,13 @@
-function Search({porNombre, setPorNombre}) {
+import { useState } from "react";
+
+function Search({searchHandler}) {
+  
+  const [string, setString] = useState("");
+
+  const handleSearch = (e) => {
+    setString(e.target.value);
+    searchHandler(e.target.value);
+  };
 
   return (
     <div className="d-inline-flex justify-content-center align-items-center w-100 p-4">
@@ -11,8 +20,8 @@ function Search({porNombre, setPorNombre}) {
         <input
           type="text"
           className="form-control search-bar"
-          onChange={() => setPorNombre(event.target.value)}
-          value={porNombre}
+          onChange={handleSearch}
+          value={string}
         />
       </div>
     </div>
